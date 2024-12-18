@@ -48,8 +48,6 @@ public class Texample {
         List<Integer> collect = integers.stream().sorted(a).collect(Collectors.toList());
 
 
-
-
     }
 
 
@@ -60,7 +58,7 @@ public class Texample {
         return list;
     }
 
-    public static void testExtends(List<? extends  A> list){
+    public static void testExtends(List<? extends A> list) {
         for (A a : list) {
             System.out.println(a);
         }
