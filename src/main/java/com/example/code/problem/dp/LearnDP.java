@@ -62,6 +62,86 @@ public class LearnDP {
 
     }
 
+
+    /**
+     * 股票问题   dpH
+     */
+    public static void learn2(int[] price) {
+
+
+    }
+
+    /**
+     * 背包问题
+     *
+     * @param args
+     */
+
+    public int learn01(int[] price, int[] volume, int v) {
+        int[] dp = new int[v + 1];
+        int[] g = new int[v + 1];
+
+        for (int i = 0; i <= price.length; i++) {
+            for (int j = 0; j <= v; j++) {
+                if (i == 0) dp[j] = 0;
+                else {
+                    if (j >= volume[i - 1]) {
+                        dp[j] = Math.min(dp[j], dp[j - volume[i - 1] + price[i - 1]]);
+                    }
+                }
+            }
+        }
+        return dp[v];
+    }
+
+    public int learn08(int[] price, int[] volume, int v) {
+
+        int[] dp = new int[v + 1];
+        int[] g = new int[v + 1];
+        g[0] = 1;
+        for (int i = 0; i <= price.length; i++) {
+            for (int j = 0; j <= v; j++) {
+                if (i == 0) dp[j] = 0;
+                else {
+                    if (j >= volume[i - 1]) {
+                        dp[j] = Math.min(dp[j], dp[j - volume[i - 1] + price[i - 1]]);
+                        if (dp[j] == dp[j - volume[i - 1] + price[i - 1]]) {
+                            g[j] = g[j] + g[j - volume[i - 1]];
+                        } else if (dp[j] < dp[j - volume[i - 1] + price[i - 1]]) {
+                            g[j] = g[j - volume[i - 1]];
+                        }
+                    }
+                }
+            }
+        }
+        return g[v];
+
+
+    }
+
+
+    {
+        //01背包 特点：每个物品只能用一次，只能是选择或者不选择
+
+
+//       完全背包 特点：每种物品有无限个，可以选择 0~n 个
+
+        //多重背包 特点：每件物品有 s 件，对于每件物品可以选择 0 ~ s 件
+
+        //混合背包
+
+        // 二维背包  容量与重量
+
+        // 分组背包
+
+        // 求最优方案数   g[i][j]   为前i个物品的
+
+        // 求背包问题的方案  这个记录就好
+
+        //有依赖的背包问题
+    }
+
+
     public static void main(String[] args) {
         learn();
     }
